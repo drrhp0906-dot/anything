@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Subject {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  systems     System[]
+  
+  @@map("subjects")
+}
+
+model System {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  subjectId   String
+  subject     Subject  @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  marks       Marks[]
+  
+  @@index([subjectId])
+  @@map("systems")
+}
+
+model Marks {
+  id          String   @id @default(cuid())
+  value       Int      // The marks value (e.g., 2, 5, 10)
+  description String?
+  systemId    String
+  system      System   @relation(fields: [systemId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  questions   Question[]
+  
+  @@index([systemId])
+  @@index([value])
+  @@map("marks")
+}
+
+model Question {
+  id               String   @id @default(cuid())
+  title            String
+  content          String?
+  terminologies    String?
+  
+  // Repeat tracking
+  repeatCount      Int      @default(1)    // How many times this question has appeared
+  yearsAppeared    String   @default("")   // Comma-separated years (e.g., "2019,2021,2023")
+  lastAppearedYear Int?                    // Most recent year this appeared
+  
+  // Importance scoring (0-100)
+  globalImportance Int      @default(50)   // User-defined importance (0-100)
+  calculatedScore  Float    @default(0)    // Calculated importance score
+  
+  marksId          String
+  marks            Marks    @relation(fields: [marksId], references: [id], onDelete: Cascade)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  files            File[]
+  folders          Folder[]
+  
+  @@index([marksId])
+  @@index([calculatedScore])
+  @@index([repeatCount])
+  @@map("questions")
+}
+
+model Folder {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  color       String   @default("blue")   // Folder color theme
+  icon        String   @default("folder") // Folder icon type
+  questionId  String
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  files       File[]
+  
+  @@index([questionId])
+  @@map("folders")
+}
+
+model File {
+  id            String   @id @default(cuid())
+  name          String
+  originalName  String
+  mimeType      String
+  size          Int
+  path          String
+  questionId    String
+  question      Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  folderId      String?
+  folder        Folder?  @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@index([questionId])
+  @@index([folderId])
+  @@map("files")
+}

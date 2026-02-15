@@ -1,0 +1,30 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "metadata": {
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": false,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": "en-US",
+      "PDFFormatVersion": "1.4"
+    },
+    "publishedTime": "Sun, 29 Sep 2019 06:32:44 GMT",
+    "textRepresentation": "",
+    "title": "July-2019.pdf",
+    "url": "https://dspace.sduaher.ac.in/jspui/bitstream/123456789/5864/1/July-2019.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}

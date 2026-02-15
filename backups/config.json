@@ -1,0 +1,8 @@
+{
+  "autoBackupEnabled": true,
+  "backupInterval": 30,
+  "lastBackup": "2026-02-15T08:08:43.416Z",
+  "nextBackup": "2026-02-15T08:38:43.416Z",
+  "maxBackups": 20,
+  "retentionDays": 30
+}

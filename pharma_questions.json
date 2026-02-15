@@ -1,0 +1,35 @@
+{
+  "code": 200,
+  "data": {
+    "description": "",
+    "html": "",
+    "metadata": {
+      "Author": "Sys",
+      "CreationDate": "D:20140508105636+05'30'",
+      "Creator": "DPE Build 5656",
+      "EncryptFilterName": null,
+      "IsAcroFormPresent": false,
+      "IsCollectionPresent": false,
+      "IsLinearized": true,
+      "IsSignaturesPresent": false,
+      "IsXFAPresent": false,
+      "Language": null,
+      "ModDate": "D:20140508105636+05'30'",
+      "PDFFormatVersion": "1.3",
+      "Producer": "DPE Build 5656"
+    },
+    "publishedTime": "Thu, 08 May 2014 05:57:28 GMT",
+    "textRepresentation": "",
+    "title": "UG-Pharmacology-QP-Jan-2008-Dec-2013.pdf",
+    "url": "https://rrmch.org/cms/pdf/question-bank/UG-Pharmacology-QP-Jan-2008-Dec-2013.pdf",
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "meta": {
+    "usage": {
+      "tokens": 0
+    }
+  },
+  "status": 20000
+}
